@@ -15,12 +15,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building..."
+                bat 'py -3 --version'
+                bat 'py -3 -m pip install -r requirements.txt'
             }
         }
 
         stage('Run') {
             steps {
-                bat 'python Test.py'
+                bat 'py -3 Test.py'
             }
         }
     }
