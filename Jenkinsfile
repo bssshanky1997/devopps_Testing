@@ -16,13 +16,15 @@ pipeline {
             steps {
                 echo "Building..."
                 bat 'py -3 --version'
-                bat 'py -3 -m pip install -r requirements.txt'
+                bat 'py -3 -m venv .venv'
+                bat '.venv\\Scripts\\python -m pip install --upgrade pip'
+                bat '.venv\\Scripts\\python -m pip install -r requirements.txt'
             }
         }
 
         stage('Run') {
             steps {
-                bat 'py -3 Test.py'
+                bat '.venv\\Scripts\\python Test.py'
             }
         }
     }
