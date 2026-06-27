@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -16,7 +20,7 @@ pipeline {
 
         stage('Run') {
             steps {
-                sh 'python3 Test.py'
+                bat 'python Test.py'
             }
         }
     }
