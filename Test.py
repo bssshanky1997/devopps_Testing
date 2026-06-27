@@ -1,18 +1,7 @@
-import os
-import threading
-import webbrowser
-
 from flask import Flask
 
 app = Flask(__name__)
 
-
-def open_browser():
-    url = "http://127.0.0.1:5000"
-    try:
-        os.startfile(url)
-    except AttributeError:
-        webbrowser.open_new_tab(url)
 
 @app.route("/")
 def home():
@@ -29,5 +18,4 @@ def home():
     """
 
 if __name__ == "__main__":
-    threading.Timer(1.0, open_browser).start()
     app.run(host="0.0.0.0", port=5000)
