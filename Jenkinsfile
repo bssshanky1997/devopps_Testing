@@ -15,10 +15,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building..."
-                bat 'py -3 --version'
-                bat 'py -3 -m venv .venv'
-                bat '.venv\\Scripts\\python -m pip install --upgrade pip'
-                bat '.venv\\Scripts\\python -m pip install -r requirements.txt'
+                bat '''
+                py -3 --version
+                if not exist .venv (
+                    py -3 -m venv .venv
+                )
+                .venv\\Scripts\\python -m pip install -r requirements.txt
+                '''
             }
         }
 
