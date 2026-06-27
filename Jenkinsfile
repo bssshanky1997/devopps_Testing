@@ -25,9 +25,9 @@ pipeline {
             }
         }
 
-        stage('Run') {
+        stage('Smoke Test') {
             steps {
-                bat '.venv\\Scripts\\python Test.py'
+                bat '.venv\\Scripts\\python test_app.py'
             }
         }
     }
